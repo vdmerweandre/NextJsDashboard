@@ -20,6 +20,51 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
+## DB create/setup
+
+Setup Prism
+
+```bash
+npx prisma init
+```
+
+In the .env file, add your database URL from Vercel Postgres.
+
+Next, define your Prisma schema in prisma/schema.prisma.
+
+Generate the Prisma Client:
+
+```bash
+npx prisma generate
+```
+
+Run the Prisma migrations:
+
+```bash
+npx prisma migrate dev --name init
+```
+
+### Next steps:
+
+1. Set the DATABASE_URL in the .env file to point to your existing database. If your database has no tables yet, read https://pris.ly/d/getting-started
+2. Set the provider of the datasource block in schema.prisma to match your database: postgresql, mysql, sqlite, sqlserver, mongodb or cockroachdb.
+3. Run npx prisma db pull to turn your database schema into a Prisma schema.
+4. Run npx prisma generate to generate the Prisma Client. You can then start querying your database.
+5. Tip: Explore how you can extend the ORM with scalable connection pooling, global caching, and real-time database events. Read: https://pris.ly/beyond-the-orm
+
+More information in our documentation:
+https://pris.ly/d/getting-started
+
+## Auth
+
+We'll use next-auth for authentication. Install the necessary packages:
+
+```bash
+npm install next-auth @next-auth/prisma-adapter @prisma/client @types/bcryptjs
+```
+
+[NextAuth.js Prisma Adapter](https://next-auth.js.org/v3/adapters/prisma)
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
