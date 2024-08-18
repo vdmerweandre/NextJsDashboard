@@ -1,5 +1,7 @@
 export type doctor = {
     id: string;
-    name: string;
+    firstName: string;
+    lastName: string;
+    email: string;
     ref: string;
 };

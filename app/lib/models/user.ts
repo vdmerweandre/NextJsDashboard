@@ -4,7 +4,4 @@ export type User = {
     lastName: string;
     password: string;
     email: string;
-    name: string;
-    age: number;
-    type: 'patient' | 'doctor';
 };
