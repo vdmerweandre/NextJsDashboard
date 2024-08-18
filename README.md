@@ -2,6 +2,13 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+Install packages. pnpm is used by Vercel, so need that one if deploying on Vercel.
+
+```bash
+pnp install
+pnpm install
+```
+
 First, run the development server:
 
 ```bash
