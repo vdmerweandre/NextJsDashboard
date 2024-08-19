@@ -21,3 +21,5 @@ const patients = [
         age: 32
     }
   ];
+  
+  module.exports = {patients};

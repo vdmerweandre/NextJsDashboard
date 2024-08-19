@@ -21,3 +21,5 @@ const doctors = [
         ref: 'Doctor ref 3'
     }
   ];
+
+  module.exports = {doctors};
