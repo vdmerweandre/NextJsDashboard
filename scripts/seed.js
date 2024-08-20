@@ -55,6 +55,7 @@ async function seedUsers(client) {
           firstName VARCHAR(255) NOT NULL,
           lastName VARCHAR(255) NOT NULL,
           email TEXT NOT NULL UNIQUE,
+          image_url VARCHAR(255) NOT NULL,
           ref VARCHAR(255) NOT NULL
         );
       `;
@@ -65,8 +66,8 @@ async function seedUsers(client) {
       const insertedDoctors = await Promise.all(
         doctors.map(
           (doctor) => client.sql`
-          INSERT INTO doctors (id, firstName, lastName, email, ref)
-          VALUES (${doctor.id}, ${doctor.firstName}, ${doctor.lastName}, ${doctor.email}, ${doctor.ref})
+          INSERT INTO doctors (id, firstName, lastName, email, image_url, ref)
+          VALUES (${doctor.id}, ${doctor.firstName}, ${doctor.lastName}, ${doctor.email}, ${doctor.image_url}, ${doctor.ref})
           ON CONFLICT (id) DO NOTHING;
         `,
         ),
@@ -95,6 +96,7 @@ async function seedUsers(client) {
           firstName VARCHAR(255) NOT NULL,
           lastName VARCHAR(255) NOT NULL,
           email TEXT NOT NULL UNIQUE,
+          image_url VARCHAR(255) NOT NULL,
           age INT NOT NULL
         );
       `;
@@ -105,8 +107,8 @@ async function seedUsers(client) {
       const insertedPatients = await Promise.all(
         patients.map(
           (patient) => client.sql`
-          INSERT INTO patients (id, firstName, lastName, email, age)
-          VALUES (${patient.id}, ${patient.firstName}, ${patient.lastName}, ${patient.email}, ${patient.age})
+          INSERT INTO patients (id, firstName, lastName, email, image_url, age)
+          VALUES (${patient.id}, ${patient.firstName}, ${patient.lastName}, ${patient.email}, ${patient.image_url}, ${patient.age})
           ON CONFLICT (id) DO NOTHING;
         `,
         ),
