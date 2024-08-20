@@ -3,16 +3,12 @@ import { GetServerSideProps } from 'next';
 import { getSession } from 'next-auth/react';
 import Search from '@/app/ui/search';
 import Table from '@/app/ui/patients/table';
-import Pagination from '@/app/ui/patients/pagination';
+import Pagination from '@/app/ui/pagination';
 import { lusitana } from '@/app/ui/fonts';
 import { CreatePatient } from '@/app/ui/patients/buttons';
 import { PatientsTableSkeleton } from '@/app/ui/skeletons';
 import { Suspense } from 'react';
 import { fetchPatientsPages } from '@/app/lib/data';
-
-// export default function Page({ userId }: { userId: string }) {
-//   return <AddPatientForm userId={userId} name="" age={0} />;
-// };
 
 export default async function Page({
   searchParams,

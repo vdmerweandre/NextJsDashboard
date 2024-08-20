@@ -25,14 +25,11 @@ export async function fetchCardData() {
         userCountPromise,
       ]);
 
-      console.log('row count ' + data[0].rows[0].count);
       const numberOfPatients = Number(data[0].rows[0].count ?? '0');
       const numberOfDoctors = Number(data[1].rows[0].count ?? '0');
       const numberOfUsers = Number(data[2].rows[0].count ?? '0');
       const totalCustomers = numberOfPatients + numberOfDoctors + numberOfUsers;
 
-      console.log('numberOfPatients ' + numberOfPatients);
-  
       return {
         numberOfPatients,
         numberOfDoctors,
@@ -88,5 +85,21 @@ export async function fetchCardData() {
     } catch (error) {
       console.error('Database Error:', error);
       throw new Error('Failed to fetch patients.');
+    }
+  }
+
+  export async function fetchPatientById(id: string) {
+    noStore();
+    try {
+      const data = await sql<PatientTable>`
+        SELECT *
+        FROM patients
+        WHERE patients.id = ${id};
+      `;
+  
+      return data.rows[0];
+    } catch (error) {
+      console.error('Database Error:', error);
+      throw new Error('Failed to fetch patient.');
     }
   }
